@@ -147,4 +147,71 @@ dd01.default_factory = int
 dd01['raju']
 print(dd01)
 
+d = dict()
+d.setdefault('missing_key', [])
+print(d)
+
+d['missing_key']
+print(d)
+
+dd = defaultdict(list)
+dd['missingkey']
+
+dd['pranav']
+print(dd)
+
+from timeit import timeit
+animals = [('cat', 1), ('rabbit', 2), ('cat', 3), ('dog', 4), ('dog', 1)]
+std_dict = dict()
+def_dict = defaultdict(list)
+
+def group_with_dict():
+    for animal, count in animals:
+        std_dict.setdefault(animal, []).append(count)
+    return std_dict
+
+def group_with_defaultdict():
+    for animal, count in animals:
+        def_dict[animal].append(count)
+    return def_dict
+
+# def group_with_defaultdict_num():
+#     def_dict1 = defaultdict(int)
+#     for animal, count in animals:
+#         def_dict1[animal]+= count
+#     return def_dict1
+
+def group_with_defaultdict_num():
+    def_dict1 = defaultdict(int)
+    for animal, count in animals:
+        def_dict1[animal]+=count
+    return def_dict1
+# print(group_with_dict())
+
+# print(group_with_defaultdict())
+
+print(group_with_defaultdict_num())
+
+# print(f'dict.setdefault() takes {timeit(group_with_dict)} seconds.')
+# print(f'defaultdict takes {timeit(group_with_defaultdict)} seconds.')
+
+# 
+animals = [('cat', 1), ('rabbit', 2), ('cat', 3), ('dog', 4), ('dog', 1)]
+std_dict = dict()
+def_dict = defaultdict(list)
+
+def group_with_dict():
+    for animal, count in animals:
+        std_dict.setdefault(animal, []).append(count)
+    return std_dict
+
+def group_with_defaultdict():
+    for animal, count in animals:
+        def_dict[animal].append(count)
+    return def_dict
+
+print(group_with_dict())
+print(group_with_defaultdict())
+print(f'dict.setdefault() takes {timeit(group_with_dict)} seconds.')
+print(f'defaultdict takes {timeit(group_with_defaultdict)} seconds.')
 
